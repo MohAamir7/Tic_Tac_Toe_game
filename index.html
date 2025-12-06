@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap" role="main" aria-label="Tic Tac Toe game">
+    <h1 class="title">Tic-Tac-Toe</h1>
+
+    <div class="controls" aria-hidden="false">
+      <div class="status" aria-live="polite">
+        Turn: <strong data-status>Player X</strong>
+      </div>
+      <div>
+        <button class="btn" data-reset type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="board-wrap" aria-hidden="false">
+      <div class="board" role="grid" aria-label="Game board" data-board>
+        <!-- 9 cells: data-index 0..8 -->
+        <button class="cell" data-cell type="button" data-index="0" aria-label="cell 0" aria-pressed="false"></button>
+        <button class="cell" data-cell type="button" data-index="1" aria-label="cell 1" aria-pressed="false"></button>
+        <button class="cell" data-cell type="button" data-index="2" aria-label="cell 2" aria-pressed="false"></button>
+        <button class="cell" data-cell type="button" data-index="3" aria-label="cell 3" aria-pressed="false"></button>
+        <button class="cell" data-cell type="button" data-index="4" aria-label="cell 4" aria-pressed="false"></button>
+        <button class="cell" data-cell type="button" data-index="5" aria-label="cell 5" aria-pressed="false"></button>
+        <button class="cell" data-cell type="button" data-index="6" aria-label="cell 6" aria-pressed="false"></button>
+        <button class="cell" data-cell type="button" data-index="7" aria-label="cell 7" aria-pressed="false"></button>
+        <button class="cell" data-cell type="button" data-index="8" aria-label="cell 8" aria-pressed="false"></button>
+      </div>
+    </div>
+
+    <p class="visually-hidden" id="instructions">Use Enter or Space to mark a cell. Press Reset to start new game.</p>
+  </main>
+
+  <!--
+    JS hooks (example usage — remove or replace in your real script):
+
+    const boardEl = document.querySelector('[data-board]');
+    const cellEls = Array.from(document.querySelectorAll('[data-cell]'));
+    const statusEl = document.querySelector('[data-status]');
+    const resetBtn = document.querySelector('[data-reset]');
+
+    let state = Array(9).fill(null); // 'X' or 'O' or null
+    let current = 'X';
+
+    function render(){
+      state.forEach((val,i) => {
+        const el = cellEls[i];
+        el.textContent = val || '';
+        el.classList.toggle('x', val === 'X');
+        el.classList.toggle('o', val === 'O');
+        el.classList.toggle('disabled', !!val);
+        el.setAttribute('aria-pressed', !!val);
+      });
+      statusEl.textContent = `Player ${current}`;
+    }
+
+    // click handler (simple)
+    boardEl.addEventListener('click', e => {
+      const btn = e.target.closest('[data-cell]');
+      if(!btn) return;
+      const idx = Number(btn.dataset.index);
+      if(state[idx]) return;
+      state[idx] = current;
+      // check win/draw here, add .winning to winning cells
+      current = current === 'X' ? 'O' : 'X';
+      render();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      state = Array(9).fill(null);
+      current = 'X';
+      cellEls.forEach(c => c.classList.remove('winning'));
+      render();
+    });
+
+    render();
+  -->
+</body>
+<script src="script.js"></script>
+</html>
